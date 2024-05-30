@@ -41,8 +41,9 @@ public class BootstrapData implements CommandLineRunner {
         rod.setLastName("Jhonson");
 
         Book noEJB= new Book();
-        ddd.setTitle("J2EE Development without EJB");
-        ddd.setIsbn("5464890");
+        noEJB.setTitle("J2EE Development without EJB");
+        noEJB.setIsbn("5464890");
+
 
         Publisher publisher1= new Publisher();
         publisher1.setPublisherName("Jonathon Keen");
@@ -60,6 +61,10 @@ public class BootstrapData implements CommandLineRunner {
         noEJBSaved.setPublisher(publisher1Saved);
         ericSaved.getBooks().add(dddSaved); // adding to the hashset of books for eric.
         rodSaved.getBooks().add(noEJBSaved);
+
+        dddSaved.getAuthors().add(ericSaved);
+        noEJBSaved.getAuthors().add(rodSaved);// saving the authors for the books keeping the relationship.
+
 
         /*save the new book association in the repository*/
         authorRepository.save(ericSaved);
